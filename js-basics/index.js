@@ -35,3 +35,12 @@ person.name = 'Alan';
 console.log(person.name);
 person['name'] = 'John';    // key lookup supports also variables
 console.log(person['name']);
+
+// Arrays (subtype of object)
+let selectedColors = ['red', 'blue', 'green', 'yellow'];
+console.log(selectedColors);
+console.log("First color: " + selectedColors[0]);
+console.log("Number of colors: " + selectedColors.length);
+// Arrays are extended via assignement to a new cell
+selectedColors[4] = 'orange';
+console.log("Number of colors: " + selectedColors.length);
