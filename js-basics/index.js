@@ -44,3 +44,23 @@ console.log("Number of colors: " + selectedColors.length);
 // Arrays are extended via assignement to a new cell
 selectedColors[4] = 'orange';
 console.log("Number of colors: " + selectedColors.length);
+
+// Functions
+function greet(person) {
+    console.log(`Hello ${person.name}, dear.`);
+}
+greet(person);
+greet('Steve');
+
+function greetFull(firstName, lastName) {
+     console.log(`Hello ${firstName} ${lastName}!`)   
+}
+// Nut supplied parameters are set to 'undefined' by default
+greetFull(person.name);
+greetFull(firstName, lastName);
+
+function square(number) {
+    return number * number;
+}
+let number = 5;
+console.log(`${number} * ${number} is ${square(number)}.`);
