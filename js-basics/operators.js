@@ -44,3 +44,17 @@ let userColor = undefined;
 let defaultColor = 'blue';
 let chosenColor = userColor || defaultColor;
 console.log(chosenColor);
+
+// Bitwise operators behave the same way as in other languages
+let currentPermissions = 7;
+let writePermissions = 4;
+let readPermissions = 2;
+let execPermissions = 1;
+
+console.log(currentPermissions)
+// toggle OFF
+currentPermissions ^= writePermissions;
+console.log(currentPermissions);
+// toggle ON again
+currentPermissions ^= writePermissions;
+console.log(currentPermissions);
