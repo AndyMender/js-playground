@@ -9,6 +9,7 @@ if (currentHour >= 6 && currentHour < 12) {
     console.log("Good evening!");
 }
 
+// switch statements support strings!
 let role = "guest";
 switch (role) {
     case "manager":
@@ -37,16 +38,22 @@ const person = {
 }
 // object properties/fields can be accessed by name
 for (let key in person) {
-    console.log(`Value of ${key}: ${person[key]}`);
+    console.log(`Mapping ${key}: ${person[key]}`);
 }
+
+// ECMAScript 2017 and later supports key,value lists
+for (const [key, value] of Object.entries(person)) {
+    console.log(`Mapping ${key}: ${value}`);
+}
+
 const colors = ['red', 'green', 'blue'];
 // array elements are still accessed by index
 for (let index in colors) {
-    console.log(`Value of colors at position ${index}: ${colors[index]}`);
+    console.log(`Color at position ${index}: ${colors[index]}`);
 }
 
 // for-of
 // array elements can be accessed directly
-for (let color of colors) {
+for (const color of colors) {
     console.log(`Chosen color is: ${color}`);
 }

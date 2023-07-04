@@ -35,10 +35,10 @@ function fizzBuzz(input) {
 
     return `${input}`;
 }
-for (let number of numbersA) {
+for (const number of numbersA) {
     console.log(`Number ${number} is a ${fizzBuzz(number)}`);
 }
-for (let number of numbersB) {
+for (const number of numbersB) {
     console.log(`Number ${number} is a ${fizzBuzz(number)}`);
 }
 
@@ -52,13 +52,14 @@ function checkSpeed(speed, speedLimit = 70, kmPerPoint = 5) {
     if (speed < (speedLimit + kmPerPoint)) return 'Ok';
 
     const speedDifference = speed - speedLimit;
+    // 'Math' is accessible directly - no need to import it!
     const penaltyPoints = Math.floor(speedDifference / kmPerPoint);
     if (penaltyPoints >= 12) return 'License suspended';
 
     return `${penaltyPoints}`;
 }
 let speeds = [52, 25, 80, 120, 150, 15, 30, 40];
-for (let currentSpeed of speeds) {
+for (const currentSpeed of speeds) {
     console.log(`Speed penalty? ${checkSpeed(currentSpeed)}`);
 }
 
@@ -66,7 +67,7 @@ for (let currentSpeed of speeds) {
 //Count all elements in an array which are coerced to boolean 'true'
 function countTruthy(array) {
     let count = 0;
-    for (let value of array) if (value) count++;
+    for (const value of array) if (value) count++;
 
     return count;
 }
@@ -76,8 +77,8 @@ console.log(`Number of truthy values: ${countTruthy(elements)} (Should be 6)`);
 // 6
 // Display all fields/properties of an object
 function showProperties(obj) {
-    for (let property in obj) {
-        console.log(`${property}: ${obj[property]}`);
+    for (const [property, value] of Object.entries(obj)) {
+        console.log(`${property}: ${value}`);
     }
 }
 const movie = {
@@ -106,7 +107,7 @@ console.log(`Sum of multiples: ${sum(10)}`);
 function calculateGrade(marks) {
     // NOTE: JS doesn't have a standard lib 'mean' or 'average' function
     let sum = 0;
-    for (let mark of marks) sum += mark;
+    for (const mark of marks) sum += mark;
     const averageScore = sum / marks.length;
 
     if (averageScore < 60) return 'F';
