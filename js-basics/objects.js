@@ -69,3 +69,17 @@ console.log(circle.constructor);
 console.log(new Boolean());     // 'false' by default
 console.log(new Number());      // '0' by default
 
+let x = { value: 10 };
+console.log(x);
+
+// 'y' is a reference to 'x'
+let y = x;
+console.log(y);
+
+// both 'x' and 'y' get changed
+x.value = 20
+console.log(x);
+console.log(y);
+
+// Objects and collections are pass-by-ref
+// Everything else (including Strings!) is pass-by-value
