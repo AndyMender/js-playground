@@ -39,15 +39,15 @@ console.log("Comparing different refs of the 'same' object?", courses.includes({
 
 // 'find()' returns 'undefined' if the predicate is not satisfied
 // old notation using a nameless function
-let found_item = courses.find(function(element) {
-    return element.id == 1 && element.name == 'a';
+let found_item = courses.find(function(course) {
+    return course.id == 1 && course.name == 'a';
 });
 console.log(found_item);
 
 // arrow function
-found_item = courses.find(element => element.id == 1 && element.name === 'a');
+found_item = courses.find(course => course.id == 1 && course.name === 'a');
 console.log(found_item);
 
 // 'find()' returns only the first element satisfying the predicate
-found_item = courses.find(element => element.name === 'a');
+found_item = courses.find(course => course.name === 'a');
 console.log(found_item);
