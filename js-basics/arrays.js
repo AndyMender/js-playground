@@ -21,9 +21,33 @@ numbers.splice(x, N, ...[0, 0, 0]);;            // replaces the splice region wi
 console.log(numbers);
 
 // Find primitive types in an array
-
 const numbers2 = [1, 2, 3, 4];
 console.log(numbers2.indexOf('a'));                             // -1 because it's not there, duh!
 console.log(numbers2.indexOf(2));                               // the actual index
 console.log(numbers2.indexOf('1'));                             // here, JS disambiguates between a String and Number
 console.log(numbers2.includes(1) && numbers2.indexOf(1) != -1);
+
+// Find reference types in an array
+const courses = [
+    { id: 1, name: 'a' },
+    { id: 2, name: 'b' },
+    { id: 3, name: 'a' }
+ ];
+
+// Same composition, but different refs - different object!
+console.log("Comparing different refs of the 'same' object?", courses.includes({ id: 1, name: 'a' }));
+
+// 'find()' returns 'undefined' if the predicate is not satisfied
+// old notation using a nameless function
+let found_item = courses.find(function(element) {
+    return element.id == 1 && element.name == 'a';
+});
+console.log(found_item);
+
+// arrow function
+found_item = courses.find(element => element.id == 1 && element.name === 'a');
+console.log(found_item);
+
+// 'find()' returns only the first element satisfying the predicate
+found_item = courses.find(element => element.name === 'a');
+console.log(found_item);
