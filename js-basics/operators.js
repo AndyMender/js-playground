@@ -1,8 +1,10 @@
 // arithmetics
 let x = 10;
 let y = 3;
-// 'double' logic works
+// default promotion to 'double' on division
 console.log(`${x} / ${y} gives ${x / y}.`);
+// floor division via standard lib
+console.log(`${x} // ${y} gives ${Math.floor(x / y)}`)
 // power operator
 console.log(`${x} to the power of ${y} is ${x ** y}`);
 // NOTE: The other operators (including increment/decrement) behave as expected
@@ -26,8 +28,17 @@ console.log('1' === 1);     // false
 
 // C/C++-style ternary operator
 let currentPoints = 100;
-let customerType = currentPoints > 100 ? 'gold' : 'silver';
+let customerType = currentPoints >= 100 ? 'gold' : 'silver';
 console.log(customerType);
+// NOTE: Can also be used to cap values instead of 'max' and 'min'
+currentPoints += 120;
+console.log('Current points:', currentPoints);
+currentPoints = currentPoints >= 100 ? 100 : currentPoints;
+console.log('Current points capped:', currentPoints);
+currentPoints -= (currentPoints + 100);
+console.log('Current points:', currentPoints);
+currentPoints = currentPoints <= 20 ? 20 : currentPoints;
+console.log('Current points capped:', currentPoints);
 
 // Logical operators behave the same as in C/C++, and can be directly assigned to variables
 let hasIncome = true;
