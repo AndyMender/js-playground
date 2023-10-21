@@ -1,30 +1,40 @@
 const message = 'This is my message';
 
 // Strings are indexable
+// Output: 'T h i s'
 console.log(message[0], message[1], message[2], message[3]);
 
 // And membership tests work, too
+// Output: 'true'
 console.log(message.includes('This'));
 
 // And other common checks and accessors
+// Output: 'true'
 console.log(message.startsWith('This'));
+// Output: 'true'
 console.log(message.includes("is"));
+// Output: 'false'
 console.log(message.endsWith('Sparta'));
+// Output: regex expression with .index defining the beginning of the match
 console.log(message.match('my'));
 console.log(message.length);
+// Output: THIS IS MY MESSAGE
 console.log(message.toUpperCase());
+// Output: this is my message
 console.log(message.toLowerCase());
-console.log(message.capi)
+// Output: array containing the individual words
 console.log(message.split(' '));
 
 // Remove whitespace
 const another = " " + message + " ";
+console.log(another);
+// Output: Removes leading and trailing whitespace
 console.log(another.trim());
 console.log(another.trimStart());
 console.log(another.trimEnd());
 
-// Multi-line strings use the template literal format
-// and support all other quote types in the body
+// Multi-line strings support templating 
+// support all other quote types in the body
 const personName = 'John';
 const multiLine = 
 `Hello ${personName},
