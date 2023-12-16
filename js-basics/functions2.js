@@ -21,8 +21,17 @@ function sum2() {
 console.log(sum2(1, 2));
 console.log(sum2(1, 2, 3, 5));
 
+// NOTE: 'Rest' parameter must always be last!
 function discount_sum(total_discount, ...prices) {
     const total = prices.reduce((a, b) => a + b);
     return total * (1 - total_discount);
 }
 console.log(discount_sum(0.1, 20, 30));
+
+// NOTE: All parameters after the 1st default parameters also need default values,
+//       the same as keyword arguments in Python
+function calculate_interest(principal, rate = 3.5, years = 5) {
+    return principal * rate / 100 * years;
+}
+console.log(calculate_interest(10000));
+console.log(calculate_interest(10000, 2.5, 15));
