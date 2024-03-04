@@ -19,5 +19,10 @@ for (const [key, value] of Object.entries(circle)) {
 }
 
 // Membership checks work on regular Objects
+console.log(circle);
 console.log("The circle has a radius?", "radius" in circle);
 console.log("The circle has a color?", "color" in circle);
+
+circle['color'] = 'brown';
+console.log(circle)
+console.log("The circle has a color now?", "color" in circle);

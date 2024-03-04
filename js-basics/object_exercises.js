@@ -6,6 +6,7 @@ class Location {
         this.zipCode = zipCode;
         this.address = `${street}, ${zipCode} ${city}`
     }
+
     showAddress() {
         console.log(this.address);
     }
@@ -15,6 +16,7 @@ const location = new Location("Downson Street 5/1", "London", 1020);
 location.showAddress();
 
 // Exercise 2 - simplified version
+// NOTE: We could return an instance of 'Location' instead of an anonymous object
 function createAddress(street, city, zipCode) {
     return {
         street,
@@ -28,7 +30,7 @@ console.log(createAddress("Downson Street 5/1", "London", 1020));
 const location1 = new Location("Downson Street 5/1", "London", 1020);
 const location2 = new Location("Downson Street 5/1", "London", 1020);
 
-// Regular equality won't work
+// Regular equality won't work and there is no method to overload for classes
 console.log("Are the locations equal?", location1 == location2);
 
 function areEqual(loc1, loc2) {

@@ -14,7 +14,7 @@ const run = function(meters) {
     } else {
         console.log(`running ${meters} meters...`);
     }
-}
+};
 
 walk();
 run();
@@ -24,9 +24,8 @@ run(2);
 // (it works even if a function does not take any arguments by default)
 function sum() {
     console.log(arguments);
-
     let total = 0;
-    // 'arguments' is iterable
+    // 'arguments' is iterable!
     for (const value of arguments) {
         total += value;
     }

@@ -9,7 +9,7 @@ if (currentHour >= 6 && currentHour < 12) {
     console.log("Good evening!");
 }
 
-// switch statements support strings!
+// switch statements support String objects!
 let role = "guest";
 switch (role) {
     case "manager":
@@ -25,35 +25,44 @@ switch (role) {
         break;
 }
 
+// NOTE: Above could be reimplemented with capitalization assuming 'default' option is not needed
+function capitalize(input) {
+    const output = input.charAt(0).toUpperCase() + input.slice(1);
+    return output;
+}
+
+console.log("Role:", role);
+console.log("Role capitalized:", capitalize(role));
+
+// Array iteration
+// - using the array index and incrementing counter
 let dogs = ["Brian", "John", "Susie"];
 for (let i = 0; i < dogs.length; i++) {
     console.log(dogs[i]);
 }
+// - for-in loop, using the array index directly
+const colors = ['red', 'green', 'blue'];
+for (let index in colors) {
+    console.log(`Color at position ${index}: ${colors[index]}`);
+}
+// - for-of loop to access elements directly
+for (const color of colors) {
+    console.log(`Chosen color is: ${color}`);
+}
 
-// Some loop definitions are specific to JavaScript
-// for-in
+// Object iteration
 const person = {
     name: "John",
     age: 22,
 }
-// object properties/fields can be accessed by name
+// - for-in loop, using the object's field/key
 for (let key in person) {
     console.log(`Mapping ${key}: ${person[key]}`);
 }
-
-// ECMAScript 2017 and later supports key,value lists
+// - unpacking objects into (key, value) arrays (since ECMAScript 2017)
 for (const [key, value] of Object.entries(person)) {
     console.log(`Mapping ${key}: ${value}`);
 }
 
-const colors = ['red', 'green', 'blue'];
-// array elements are still accessed by index
-for (let index in colors) {
-    console.log(`Color at position ${index}: ${colors[index]}`);
-}
-
-// for-of
-// array elements can be accessed directly
-for (const color of colors) {
-    console.log(`Chosen color is: ${color}`);
-}
+// Arrays and objects share iteration syntax and each comes as a pair (index/field, value)
+// The 'for-of' loop works only on "iterable" collections and requires extra logic for objects

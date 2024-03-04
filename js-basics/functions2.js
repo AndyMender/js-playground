@@ -1,7 +1,8 @@
 // Javascript doesn't care about the type or number of variables.
 // Missing values are set to 'undefined', excess values are ignored
+// NOTE: An explicit arglist is treated as an Array
 function sum(...args) {
-    // NOTE: '.reduce()' can be used also without the 'total' parameter
+    // NOTE: The initial value is only to distinguish between 'string' and 'number'
     let total = (typeof args[0] === 'number') ? 0 : '';
     return args.reduce((a, b) => a + b, total);
 }
@@ -12,6 +13,7 @@ console.log(sum('a', 'b'));
 function sum2() {
     let total = 0;
     // 'arguments' contains all args passed to the function
+    // NOTE: 'arguments' is iterable, but not an Array so array methods can't be used
     for (let value of arguments) {
         total += value;
     }
@@ -21,7 +23,7 @@ function sum2() {
 console.log(sum2(1, 2));
 console.log(sum2(1, 2, 3, 5));
 
-// NOTE: 'Rest' parameter must always be last!
+// NOTE: The arglist parameter must always be last!
 function discount_sum(total_discount, ...prices) {
     const total = prices.reduce((a, b) => a + b);
     return total * (1 - total_discount);

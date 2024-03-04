@@ -1,4 +1,4 @@
-// Exercise 4 - regular implementation
+// 4 - regular implementation
 const numbers = [1, 2, 3, 4];
 
 console.log(numbers);
@@ -13,7 +13,7 @@ function move(array, index, offset) {
 
     // 2. Remove element from a given position
     const element = output.splice(index, 1).pop();
-    
+
     // 3. Put element back in at the offsetted position
     const newIndex = index + offset;
     output.splice(newIndex, 0, element);
@@ -21,7 +21,7 @@ function move(array, index, offset) {
     return output;
 };
 
-// Exercise 5 - custom implementation
+// 5 - custom implementation
 const numbers1 = [1, 2, 3, 4, 1];
 
 let count = countOccurrences(numbers1, -1);
@@ -29,16 +29,14 @@ console.log(count);
 count = countOccurrences(numbers1, 1);
 console.log(count);
 
-function countOccurrences(array, searchElement) {
-    // Using '+' on a number and a boolean is so-so, but in JS it works as intended
-    // (true == 1, false == 0)
-    // NOTE: The 'map()' step is mostly for clarity; one can embed the condition in 'reduce()'
-    return array
-        .map(element => element === searchElement)
-        .reduce((accumulator, element) => accumulator + element);
+function countOccurrences(values, searchElement) {
+    // Other options are either more verbose or unclear
+    // NOTE: The incrementor needs to precede the 'accumulator'!
+    return values
+        .reduce(((accumulator, item) => (item === searchElement) ? ++accumulator : accumulator), 0);
 };
 
-// Exercise 6 - custom implementation
+// 6 - custom implementation
 let numbers2 = [1, 2, 0, 3, 5, 10, -1];
 
 const max = getMax(numbers2);
@@ -46,15 +44,14 @@ const min = getMin(numbers2);
 console.log("Max of numbers:", max);
 console.log("Min of numbers:", min);
 
-function getMax(array) {
+function getMax(values) {
     // NOTE: A selector based on a ternary operator is still reductive, so 'reduce()' is fine
-    return array
+    return values
         .reduce(((accumulator, current) => (current > accumulator) ? current : accumulator));
 }
 
-function getMin(array) {
+function getMin(values) {
     // NOTE: A selector based on a ternary operator is still reductive, so 'reduce()' is fine
-    return array
+    return values
         .reduce(((accumulator, current) => (current < accumulator) ? current : accumulator));
 }
-

@@ -15,8 +15,9 @@ console.log(message.startsWith('This'));
 console.log(message.includes("is"));
 // Output: 'false'
 console.log(message.endsWith('Sparta'));
-// Output: regex expression with .index defining the beginning of the match
-console.log(message.match('my'));
+// Output: complete regex expression with .index defining the beginning of the match
+const regexMatch = message.match('my')
+console.log(`Regex expression: ${regexMatch}, input: ${regexMatch.input}, found at position: ${regexMatch.index}`);
 console.log(message.length);
 // Output: THIS IS MY MESSAGE
 console.log(message.toUpperCase());
@@ -30,7 +31,9 @@ const another = " " + message + " ";
 console.log(another);
 // Output: Removes leading and trailing whitespace
 console.log(another.trim());
+// Output: Removes only leading whitespace
 console.log(another.trimStart());
+// Output: Removes only trailing whitespace
 console.log(another.trimEnd());
 
 // Multi-line strings support templating 

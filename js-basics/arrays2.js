@@ -1,3 +1,4 @@
+// Seed/generate array from scratch
 let numbers = [...Array(5).keys()];
 console.log(numbers);
 
@@ -12,16 +13,17 @@ console.log(numbers);
 // 'splice()' pops a segment of a list (replacing items are optional)
 
 // Functional emptying of an array
-// solution 1 - overwriting
+// solution 1 (EASIEST) - overwriting
 numbers = [];
 console.log(numbers);
 
 // solution 2 - zeroeing the length
+// NOTE: Overwriting array's length can be used for trimming as well
 numbers = [...Array(5).keys()];
 numbers.length = 0;
 console.log(numbers);
 
-// solution 3 - splicing till the end
+// solution 3 - splicing from start to end
 numbers = [...Array(5).keys()];
 numbers.splice(0, numbers.length);
 console.log(numbers);
