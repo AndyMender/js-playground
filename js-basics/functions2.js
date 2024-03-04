@@ -32,8 +32,13 @@ console.log(discount_sum(0.1, 20, 30));
 
 // NOTE: All parameters after the 1st default parameters also need default values,
 //       the same as keyword arguments in Python
-function calculate_interest(principal, rate = 3.5, years = 5) {
-    return principal * rate / 100 * years;
+// (an alternative would be something like 'percentageRate = percentageRate || 3.5', but here it's unnecessary)
+// NOTE2: default parameters were added in ES6
+function calculate_interest(principal, percentageRate = 3.5, years = 5) {
+    return principal * percentageRate / 100 * years;
 }
 console.log(calculate_interest(10000));
 console.log(calculate_interest(10000, 2.5, 15));
+// Passing 'undefined' in the place of a default parameter will revert to its default value
+console.log(calculate_interest(10000, undefined, 15));
+console.log(calculate_interest(10000, 3.5, 15));            // same result as above
