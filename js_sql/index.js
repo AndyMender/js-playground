@@ -21,6 +21,7 @@ const newRow = {
   avgTemp: 13.35
 }
 
+// NOTE: "db.run() calls are executed in parallel so it's possible to run into race conditions"
 db.run(
     'INSERT INTO TemperatureData (location, year, temp_avg) VALUES ($location, $year, $avgTemp)',
     {
@@ -77,6 +78,7 @@ for (const id of ids) {
 }
 
 // for-each iterations after a SQL query
+// NOTE: 1st callback operates on each row, 2nd callback runs after the 1st completes and can be used to operate on aggregated values
 console.log("Running a 'db.each()' call...");
 db.each(
     'SELECT * FROM TemperatureData',
@@ -85,3 +87,5 @@ db.each(
         printQueryResults(row);
     }
 );
+
+// 'db.serialize()' solves the problem fo race conditions between 'db.run()' calls
