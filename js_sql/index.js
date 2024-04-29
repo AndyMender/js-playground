@@ -29,3 +29,21 @@ db.get(
         printQueryResults(row);
     }
 );
+
+const ids = [1, 25, 45, 100, 360, 382];
+
+// Single row query using a query placeholder
+for (const id of ids) {
+    console.log(id);
+
+    db.get(
+        'SELECT * FROM TemperatureData WHERE id=$id',
+        {
+            $id: id
+        },
+        (error, row) => {
+            printQueryResults(row);
+        }
+    );
+}
+
