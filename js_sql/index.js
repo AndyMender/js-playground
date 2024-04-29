@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3');
 
-function printQueryResults(rows) {
-    console.log(rows);
+function printQueryResults(row) {
+    console.log(row);
 }
 
 // Create or load existing database file
@@ -27,15 +27,13 @@ db.run(
         $location: newRow.location,
         $year: newRow.year,
         $avgTemp: newRow.avgTemp
-    },
-    function (error) {
-        console.log(this.lastID);
     }
 );
 
 // Run full query + handle results in a callback
+console.log("Running a 'db.all()' call...");
 db.all(
-    'SELECT * FROM TemperatureData ORDER BY year;',
+    'SELECT * FROM TemperatureData ORDER BY year',
     (error, rows) => {
         if (error) {
             // Or log the error and move on
@@ -46,12 +44,18 @@ db.all(
 );
 
 // Limited single row query
+console.log("Running 'db.get()' call...");
+const year = 1989;
 db.get(
-    'SELECT * FROM TemperatureData WHERE year=1989',
+    'SELECT * FROM TemperatureData WHERE year=$year',
+    {
+        $year: year
+    },
     (error, row) => {
         if (error) {
             throw error;
         }
+        console.log(`Results for year ${year}: ${row}`);
         printQueryResults(row);
     }
 );
@@ -59,16 +63,25 @@ db.get(
 const ids = [1, 25, 45, 100, 360, 382];
 
 // Single row query using a query placeholder
+console.log("Running a looped 'db.get()' call...");
 for (const id of ids) {
-    console.log(id);
-
     db.get(
         'SELECT * FROM TemperatureData WHERE id=$id',
         {
             $id: id
         },
         (error, row) => {
-            printQueryResults(row);
+            console.log(`Entry for ${id}: ${row}`);
         }
     );
 }
+
+// for-each iterations after a SQL query
+console.log("Running a 'db.each()' call...");
+db.each(
+    'SELECT * FROM TemperatureData',
+    (error, row) => {
+        if (error) throw error;
+        printQueryResults(row);
+    }
+);
